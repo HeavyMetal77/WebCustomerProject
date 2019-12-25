@@ -65,7 +65,9 @@
 	<tx:annotation-driven transaction-manager="myTransactionManager" />
 
 	<!-- Add support for reading web resources: css, images, js, etc ... -->
-	<mvc:resources location="/resources/" mapping="/resources/**"/>
+	<!-- href="${pageContext.request.contextPath}/res/css/style.css" из list-customer.jsp название папки res - одинаковое!! -->
+	<!-- и в <mvc:resources location="/res/" mapping="/res/**"/>  - одинаковое!! -->
+	<mvc:resources location="/res/" mapping="/res/**"/>
 	
 </beans>
 
