@@ -1,4 +1,4 @@
-package DBtest;
+package ua.tarastom.DBtest;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
