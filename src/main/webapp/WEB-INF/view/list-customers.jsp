@@ -12,8 +12,8 @@
           rel="stylesheet"
           href="${pageContext.request.contextPath}/res/css/style.css" />
 </head>
-<body>
 
+<body>
 
 <div id="wrapper">
     <div id="header">
@@ -31,14 +31,21 @@
                 <th>First name</th>
                 <th>Last name</th>
                 <th>Email</th>
+                <th>Action</th>
             </tr>
 
-            <c:forEach var="tempCustomers" items="${customers}">
-                    <tr>
-                        <td>${tempCustomers.firstName}</td>
-                        <td>${tempCustomers.lastName}</td>
-                        <td>${tempCustomers.email}</td>
-                    </tr>
+            <c:forEach var="tempCustomer" items="${customers}">
+                <!-- construct an "update" link with customer id -->
+                <c:url var="updateLink" value="/customer/showFormForUpdate">
+                    <c:param name="customerId" value="${tempCustomer.id}" />
+                </c:url>
+
+                <tr>
+                    <td>${tempCustomer.firstName}</td>
+                    <td>${tempCustomer.lastName}</td>
+                    <td>${tempCustomer.email}</td>
+                    <td><a href="${updateLink}">Update</a></td>
+                </tr>
             </c:forEach>
         </table>
     </div>

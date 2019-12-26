@@ -18,6 +18,9 @@
 <div id="container">
     <h3>Save customer</h3>
     <form:form action="saveCustomer" modelAttribute="customer" method="post">
+
+        <form:hidden path="id"/> <!-- скрытое поле - помнить id для апдейта -->
+
         <table>
             <tbody>
                 <tr>
