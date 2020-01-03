@@ -2,10 +2,9 @@ package ua.tarastom.DBtest;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class Test {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         String jdbcUrl = "jdbc:mysql://localhost:3306/web_customer_tracker?useSSL=false&serverTimezone=UTC";
         String user = "springstudent";
         String password = "springstudent";
@@ -19,6 +18,5 @@ public class Test {
         catch (Exception exc) {
             exc.printStackTrace();
         }
-
     }
 }
