@@ -59,5 +59,10 @@
     </div>
 </div>
 
+<hr>
+
+<br><br>
+<a href="${pageContext.request.contextPath}/api/customers">API Customers</a>
+
 </body>
 </html>
