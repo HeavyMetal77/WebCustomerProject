@@ -30,10 +30,26 @@ public class CustomerRestController {
     }
 
     @PostMapping("/customers")
-    public List<Customer> saveCustomers(@RequestBody Customer theCustomer) {
+    public Customer addCustomer(@RequestBody Customer theCustomer) {
         theCustomer.setId(0); //устанавливаем 0 для вставки (сохранения) клиента
         customerService.saveOrUpdateCustomer(theCustomer);
-        return customerService.getCustomers();
+        return theCustomer;
     }
 
+    @PutMapping("/customers")
+    public Customer updateCustomer(@RequestBody Customer theCustomer) {
+       // setId(1) - не устанавливаем для Update клиента
+        customerService.saveOrUpdateCustomer(theCustomer);
+        return theCustomer;
+    }
+
+    @DeleteMapping("/customers/{theCustomerId}")
+    public String deleteCustomer(@PathVariable int theCustomerId) {
+        Customer customer = customerService.getCustomer(theCustomerId);
+        if (customer == null) {
+            throw new CustomerNotFoundException("Customer " + theCustomerId + " is not found");
+        }
+        customerService.deleteCustomer(theCustomerId);
+        return "Deleted customer id=" + theCustomerId;
+    }
 }
