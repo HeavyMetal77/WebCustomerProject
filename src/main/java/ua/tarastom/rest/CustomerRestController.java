@@ -1,4 +1,4 @@
-package ua.tarastom.controller;
+package ua.tarastom.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +20,20 @@ public class CustomerRestController {
         return customers;
     }
 
-    @GetMapping("/customer/{theId}")
+    @GetMapping("/customers/{theId}")
     public Customer getCustomer(@PathVariable int theId) {
         Customer customer = customerService.getCustomer(theId);
+        if (customer == null) {
+            throw new CustomerNotFoundException("Customer with id=" + theId + " not found!");
+        }
         return customer;
     }
+
+    @PostMapping("/customers")
+    public List<Customer> saveCustomers(@RequestBody Customer theCustomer) {
+        theCustomer.setId(0); //устанавливаем 0 для вставки (сохранения) клиента
+        customerService.saveOrUpdateCustomer(theCustomer);
+        return customerService.getCustomers();
+    }
+
 }

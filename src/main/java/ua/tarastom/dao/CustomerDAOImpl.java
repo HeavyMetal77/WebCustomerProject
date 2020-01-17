@@ -31,7 +31,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public void saveOrUpdateCustomer(Customer theCustomer) {
         Session currentSession = sessionFactory.getCurrentSession();
-        //берет id из скытого поля <form:hidden path="id"/> customer-form и сам определяет сохранять или обновлять
+        //берет id из скрытого поля <form:hidden path="id"/> customer-form и сам определяет сохранять или обновлять
         currentSession.saveOrUpdate(theCustomer);
     }
 
